@@ -30,4 +30,5 @@ jobs:
           '
       - name: Custom action
         run: |
+          pwd
           node check.js
