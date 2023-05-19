@@ -7,7 +7,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         version: [12.18.0]
-    runs-on: ${{ mattrix.os }}
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
