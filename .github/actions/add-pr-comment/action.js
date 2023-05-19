@@ -19,6 +19,10 @@ async function run() {
           commit_sha: sha,
       });
   
+
+      const issue_number = parseInt(pr_number) || context.payload.pull_request?.number || context.payload.issue?.number;
+
+      console.log("issue_number", issue_number);
       console.log(JSON.stringify(github.context));
       const prs = result.data.filter((el) => state === 'all' || el.state === state);
       const pr =
