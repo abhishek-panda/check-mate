@@ -16,8 +16,12 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          version: 12
+      - run: npm install @octokit/action
       - name: Commenting on PR with Binder link
-        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
