@@ -23,5 +23,6 @@ jobs:
           node -e '
           // JavaScript code here
           const message = "Hello, GitHub Actions!";
+          console.log(express)
           console.log(message);
           '
