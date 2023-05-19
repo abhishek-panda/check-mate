@@ -22,5 +22,5 @@ jobs:
         run: |
           node ./.github/actions/add-pr-comment/action.js
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GI: ${{secrets.GITHUB_TOKEN}}
         
