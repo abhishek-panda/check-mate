@@ -12,7 +12,7 @@ async function run() {
       console.log("sha", sha)
       const octokit = new github.getOctokit(token);
   
-      console.log(octokit);
+      // console.log(octokit);
       // await octokit.rest.issues.createComment({
       //   owner,
       //   repo,
