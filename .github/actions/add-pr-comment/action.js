@@ -10,8 +10,21 @@ async function run() {
 
 
       const octokit = new github.getOctokit(token);
+
+      const context = github.context;
+      const result = await octokit.rest.repos.listPullRequestsAssociatedWithCommit({
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          commit_sha: sha,
+      });
   
-      // console.log(octokit);
+      const prs = result.data.filter((el) => state === 'all' || el.state === state);
+      const pr =
+          prs.find((el) => {
+              return context.payload.ref === `refs/heads/${el.head.ref}`;
+          }) || prs[0];
+  
+      console.log(pr);
       // await octokit.rest.issues.createComment({
       //   owner,
       //   repo,
