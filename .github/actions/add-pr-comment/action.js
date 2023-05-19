@@ -9,7 +9,6 @@ async function run() {
       const sha = core.getInput('sha', { required: true });
 
 
-      console.log("sha", sha)
       const octokit = new github.getOctokit(token);
   
       // console.log(octokit);
