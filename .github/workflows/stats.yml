@@ -29,4 +29,5 @@ jobs:
           console.log(message);
           '
       - name: Custom action
-        uses: ./.github/actions/hello-world-action
+        run: |
+          node check.js
