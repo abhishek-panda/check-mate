@@ -5,7 +5,6 @@ async function run() {
     try {
       const owner = core.getInput('owner', { required: true });
       const repo = core.getInput('repo', { required: true });
-      const pr_number = core.getInput('pr_number') || '';
       const token = core.getInput('token', { required: true });
   
       const octokit = new github.getOctokit(token);
@@ -13,7 +12,7 @@ async function run() {
       await octokit.rest.issues.createComment({
         owner,
         repo,
-        issue_number: pr_number,
+        issue_number: '',
         body: `Hello Working finally`
       });
     } catch (error) {
