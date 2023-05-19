@@ -16,6 +16,7 @@ jobs:
         run: npm ci
       - name: Add Custom Comment to Pull Request
         run: |
+            echo owner: ${{ github.repository_owner }}
             echo github.event.number = ${{ github.event.number  }}
             echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
             echo github.event.issue.number = ${{ github.event.issue.number }}
