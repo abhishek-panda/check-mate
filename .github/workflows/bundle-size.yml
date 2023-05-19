@@ -1,0 +1,39 @@
+name: Bundle Size
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+permissions:
+  issues: write
+  pull-requests: write
+  contents: write
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+      - name: Master branch checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+      - name: Install dependencies
+        run: npm ci
+      - name: Run script in master
+        run: |
+          cat index.js
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Run script in master
+        run: |
+          cat index.js
+      - name: Add Custom Comment to Pull Request
+        uses: ./.github/actions/add-pr-comment
+        with:
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.event.pull_request.head.sha || github.sha }}

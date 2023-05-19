@@ -1,0 +1,25 @@
+name: Pull Request Comment Action
+description: An example custom action written in JavaScript
+author: Abhishek Panda
+inputs:
+  owner:
+    description: 'The owner of the repository (user or org)'
+    required: true
+  repo:
+    description: 'The repository name'
+    required: true
+  token:
+    description: 'The token to use to access the GitHub API'
+    required: true
+  state:
+    required: false
+    description: The state of the PR to return.  One of "open", "closed", or "all".
+    default: 'open'
+  sha:
+    required: false
+    description: SHA to get PR for. Defaults to current pull request SHA or current SHA.
+    default: ${{ github.event.pull_request.head.sha || github.sha }}
+
+runs:
+  using: 'node16'
+  main: 'action.js'
