@@ -9,12 +9,13 @@ async function run() {
   
       const octokit = new github.getOctokit(token);
   
-      await octokit.rest.issues.createComment({
-        owner,
-        repo,
-        issue_number: '',
-        body: `Hello Working finally`
-      });
+      console.log(octokit);
+      // await octokit.rest.issues.createComment({
+      //   owner,
+      //   repo,
+      //   issue_number: '',
+      //   body: `Hello Working finally`
+      // });
     } catch (error) {
       core.setFailed(error.message);
     }
