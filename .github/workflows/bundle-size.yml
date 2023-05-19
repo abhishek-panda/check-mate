@@ -1,6 +1,8 @@
 name: Bundle Size
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: 
+  pull_request:
+    types: [opened, synchronize]
 permissions:
   issues: write
   pull-requests: write
@@ -22,14 +24,14 @@ jobs:
         run: npm ci
       - name: Run script in master
         run: |
-          cat index.js
-      - name: Checkout PR branch
+          npm start
+      - name: Checkout Pull Request branch
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm ci
-      - name: Run script in master
+      - name: Run script in PR branch
         run: |
-          cat index.js
+          npm start
       - name: Add Custom Comment to Pull Request
         uses: ./.github/actions/add-pr-comment
         with:
