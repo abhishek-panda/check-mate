@@ -16,6 +16,8 @@ jobs:
         run: npm ci
       - name: Add Custom Comment to Pull Request
         uses: ./.github/actions/add-pr-comment
-        env:
-          GI: ${{secrets.GITHUB_TOKEN}}
-        
+        with:
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          pr_number: ${{ github.event.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}

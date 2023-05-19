@@ -18,5 +18,9 @@
   "homepage": "https://github.com/abhishek-panda/check-mate#readme",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1"
   }
 }
