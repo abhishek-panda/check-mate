@@ -10,4 +10,5 @@ inputs:
     required: false
 runs:
   using: composite
-  main: action.js
+  steps:
+    - run: node action.js
