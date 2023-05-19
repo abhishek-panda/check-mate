@@ -19,7 +19,7 @@ async function run() {
           commit_sha: sha,
       });
   
-      console.log(github.context.event.number);
+      console.log(github.context.issue.number);
       const prs = result.data.filter((el) => state === 'all' || el.state === state);
       const pr =
           prs.find((el) => {
