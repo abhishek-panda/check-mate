@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Bundle Size
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
@@ -18,15 +18,5 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Install dependencies
         run: npm ci
-      - name: Run Javascript
-        run: |
-          node -e '
-          // JavaScript code here
-          var express = require("express")
-          console.log(express);
-
-          const message = "Hello, GitHub Actions!";
-          console.log(message);
-          '
-      - name: Custom action
-        uses: ./.github/actions/hello-world-action
+      - name: Add Custom Comment to Pull Request
+        uses: ./.github/actions/add-pr-comment

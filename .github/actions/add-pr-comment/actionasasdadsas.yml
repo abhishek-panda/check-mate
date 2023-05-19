@@ -1,6 +1,6 @@
-name: My Custom Action
+name: Add Pull Request Comment Action
 description: An example custom action written in JavaScript
-author: Your Name
+author: Abhishek Panda
 inputs:
   input1:
     description: Description of input 1
@@ -10,4 +10,4 @@ inputs:
     required: false
 runs:
   using: node12
-  main: index.js
+  main: action.js
