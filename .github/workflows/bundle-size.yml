@@ -9,32 +9,31 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org
+      - name: Master branch checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Install dependencies
         run: npm ci
+      - name: Run script in master
+        run: |
+          cat index.js
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Run script in master
+        run: |
+          cat index.js
       - name: Add Custom Comment to Pull Request
-        # run: |
-        #     echo owner: ${{ github.repository_owner }}
-        #     echo github.event.number = ${{ github.event.number  }}
-        #     echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
-        #     echo github.event.issue.number = ${{ github.event.issue.number }}
-        #     echo github.event.pull_request.head.sha = ${{ github.event.pull_request.head.sha }}
-        #     echo github.sha  = $ {{ github.sha }}
-        #     echo context_number = ${{ github.context.payload.pull_request.number }}
-        #     echo context.payload.issue.number = ${{ github.context.payload.issue.number }}
         uses: ./.github/actions/add-pr-comment
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           token: ${{ secrets.GITHUB_TOKEN }}
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-        # uses: thollander/actions-comment-pull-request@v2
-        # with:
-        #   message: |
-        #     Hello world ! :wave:
