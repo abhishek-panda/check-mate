@@ -9,6 +9,3 @@ inputs:
 runs:
   using: 'node16'
   main: action.js
-  steps:
-    - run: node ./.github/actions/add-pr-comment/action.js
-      shell: bash
