@@ -22,7 +22,8 @@ jobs:
         run: |
           node -e '
           // JavaScript code here
-          console.log(process.version);
+          var express = require("express")
+          console.log(express);
 
           const message = "Hello, GitHub Actions!";
           console.log(message);
