@@ -20,7 +20,7 @@ async function run() {
       });
   
 
-      const issue_number = context.payload.pull_request?.number || context.payload.issue?.number;
+      const issue_number = context.payload.pull_request?.number || context.payload.issue?.number || context.issue.number;
 
       console.log("issue_number", issue_number);
       console.log(JSON.stringify(github.context));
