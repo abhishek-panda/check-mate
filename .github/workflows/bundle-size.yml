@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Add Custom Comment to Pull Request
-        uses: .github/actions/add-pr-comment
+        uses: ./.github/actions/add-pr-comment
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
