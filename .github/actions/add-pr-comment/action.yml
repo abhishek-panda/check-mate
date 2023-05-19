@@ -11,5 +11,5 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: node ./action.js
+    - run: node ./github/actions/add-pr-comment/action.js
       shell: bash
