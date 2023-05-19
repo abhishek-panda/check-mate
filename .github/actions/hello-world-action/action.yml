@@ -1,0 +1,13 @@
+name: My Custom Action
+description: An example custom action written in JavaScript
+author: Your Name
+inputs:
+  input1:
+    description: Description of input 1
+    required: true
+  input2:
+    description: Description of input 2
+    required: false
+runs:
+  using: node12
+  main: ./.github/actions/hello-world-action/index.js

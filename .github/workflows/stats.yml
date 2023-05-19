@@ -23,6 +23,9 @@ jobs:
           node -e '
           // JavaScript code here
           console.log(process.version);
+
           const message = "Hello, GitHub Actions!";
           console.log(message);
           '
+      - name: Custom action
+        uses: ./.github/actions/hello-world-action
