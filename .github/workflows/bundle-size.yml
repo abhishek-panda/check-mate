@@ -19,4 +19,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Add Custom Comment to Pull Request
-        uses: ./.github/actions/add-pr-comment
+        run: |
+          node ./.github/actions/add-pr-comment/action.js
