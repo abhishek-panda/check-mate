@@ -4,6 +4,7 @@ const github = require('@actions/github');
 async function run() {
     try {
       const owner = core.getInput('owner', { required: true });
+      const state = (core.getInput('state', { required: false }) || 'open').toLowerCase();
       const repo = core.getInput('repo', { required: true });
       const token = core.getInput('token', { required: true });
       const sha = core.getInput('sha', { required: true });
