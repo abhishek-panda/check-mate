@@ -24,6 +24,5 @@ jobs:
           // JavaScript code here
           console.log(process.version);
           const message = "Hello, GitHub Actions!";
-          console.log(express)
           console.log(message);
           '
