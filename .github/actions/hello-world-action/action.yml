@@ -10,4 +10,4 @@ inputs:
     required: false
 runs:
   using: node12
-  main: ./.github/actions/hello-world-action/index.js
+  main: index.js
