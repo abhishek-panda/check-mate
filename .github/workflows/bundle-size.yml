@@ -30,4 +30,3 @@ jobs:
           repo: ${{ github.event.repository.name }}
           token: ${{ secrets.GITHUB_TOKEN }}
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          pr_number: ${{ context.payload.pull_request.number }}
