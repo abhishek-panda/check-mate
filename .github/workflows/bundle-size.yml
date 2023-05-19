@@ -28,9 +28,13 @@ jobs:
         #     echo github.sha  = $ {{ github.sha }}
         #     echo context_number = ${{ github.context.payload.pull_request.number }}
         #     echo context.payload.issue.number = ${{ github.context.payload.issue.number }}
-        uses: ./.github/actions/add-pr-comment
+        # uses: ./.github/actions/add-pr-comment
+        # with:
+        #   owner: ${{ github.repository_owner }}
+        #   repo: ${{ github.event.repository.name }}
+        #   token: ${{ secrets.GITHUB_TOKEN }}
+        #   sha: ${{ github.event.pull_request.head.sha || github.sha }}
+        uses: thollander/actions-comment-pull-request@v2
         with:
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          sha: ${{ github.event.pull_request.head.sha || github.sha }}
+          message: |
+            Hello world ! :wave:
