@@ -18,17 +18,13 @@ async function run() {
           repo: context.repo.repo,
           commit_sha: sha,
       });
-  
-
-      const issue_number = context.payload.pull_request?.number || context.payload.issue?.number || context.issue.number;
 
       const prs = result.data.filter((el) => state === 'all' || el.state === state);
       const pr =
           prs.find((el) => {
               return context.payload.ref === `refs/heads/${el.head.ref}`;
           }) || prs[0];
-  
-      console.log(pr);
+
       await octokit.rest.issues.createComment({
         owner,
         repo,
@@ -41,5 +37,3 @@ async function run() {
 }
   
 run();
-
-console.log("Working..........")
