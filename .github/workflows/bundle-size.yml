@@ -14,28 +14,17 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Install dependencies
         run: npm ci
-      - name: Checking
-      # Find the PR associated with this push, if there is one.
-        uses: jwalton/gh-find-current-pr@v1
-        id: findPr
+      - name: Add Custom Comment to Pull Request
+        # run: |
+        #     echo owner: ${{ github.repository_owner }}
+        #     echo github.event.number = ${{ github.event.number  }}
+        #     echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
+        #     echo github.event.issue.number = ${{ github.event.issue.number }}
+        #     echo github.event.pull_request.head.sha = ${{ github.event.pull_request.head.sha }}
+        #     echo github.sha  = $ {{ github.sha }}
+        uses: ./.github/actions/add-pr-comment
         with:
-          # Can be "open", "closed", or "all".  Defaults to "open".
-          state: open
-      # This will echo "Your PR is 7", or be skipped if there is no current PR.
-      - run: echo "Your PR is ${PR}"
-        if: success() && steps.findPr.outputs.number
-        env:
-          PR: ${{ steps.findPr.outputs.pr }}
-      # - name: Add Custom Comment to Pull Request
-      #   run: |
-      #       echo owner: ${{ github.repository_owner }}
-      #       echo github.event.number = ${{ github.event.number  }}
-      #       echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
-      #       echo github.event.issue.number = ${{ github.event.issue.number }}
-      #       echo github.event.pull_request.head.sha = ${{ github.event.pull_request.head.sha }}
-      #       echo github.sha  = $ {{ github.sha }}
-        # uses: ./.github/actions/add-pr-comment
-        # with:
-        #   owner: ${{ github.repository_owner }}
-        #   repo: ${{ github.event.repository.name }}
-        #   token: ${{ secrets.GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.event.pull_request.head.sha || github.sha }}

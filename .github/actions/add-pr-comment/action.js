@@ -6,7 +6,10 @@ async function run() {
       const owner = core.getInput('owner', { required: true });
       const repo = core.getInput('repo', { required: true });
       const token = core.getInput('token', { required: true });
-  
+      const sha = core.getInput('sha', { required: true });
+
+
+      console.log("sha", sha)
       const octokit = new github.getOctokit(token);
   
       console.log(octokit);

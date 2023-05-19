@@ -11,6 +11,10 @@ inputs:
   token:
     description: 'The token to use to access the GitHub API'
     required: true
+  sha:
+    required: false
+    description: SHA to get PR for. Defaults to current pull request SHA or current SHA.
+    default: ${{ github.event.pull_request.head.sha || github.sha }}
 
 runs:
   using: 'node16'
