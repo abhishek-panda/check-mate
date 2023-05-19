@@ -1,15 +1,14 @@
-name: Add Pull Request Comment Action
+name: Pull Request Comment Action
 description: An example custom action written in JavaScript
 author: Abhishek Panda
 inputs:
-  input1:
-    description: Description of input 1
+  token:
+    description: 'The token to use to access the GitHub API'
     required: true
-  input2:
-    description: Description of input 2
-    required: false
+
 runs:
-  using: composite
+  using: 'node16'
+  main: action.js
   steps:
     - run: node ./.github/actions/add-pr-comment/action.js
       shell: bash

@@ -15,7 +15,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Add Custom Comment to Pull Request
-        uses: ./
+        uses: ./.github/actions/hello-world-action
+        run:
+          working-directory: ./.github/actions/hello-world-action
         env:
           GI: ${{secrets.GITHUB_TOKEN}}
         
