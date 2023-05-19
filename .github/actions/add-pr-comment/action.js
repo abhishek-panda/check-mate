@@ -22,22 +22,19 @@ async function run() {
 
       const issue_number = context.payload.pull_request?.number || context.payload.issue?.number || context.issue.number;
 
-      console.log("issue_number", issue_number);
-      console.log("context.issue.number", context.issue.number);
-      console.log(JSON.stringify(github.context));
       const prs = result.data.filter((el) => state === 'all' || el.state === state);
       const pr =
           prs.find((el) => {
               return context.payload.ref === `refs/heads/${el.head.ref}`;
           }) || prs[0];
   
-      // console.log(pr);
-      // await octokit.rest.issues.createComment({
-      //   owner,
-      //   repo,
-      //   issue_number: '',
-      //   body: `Hello Working finally`
-      // });
+      console.log(pr);
+      await octokit.rest.issues.createComment({
+        owner,
+        repo,
+        issue_number: pr.number,
+        body: `Hello Working finally`
+      });
     } catch (error) {
       core.setFailed(error.message);
     }
