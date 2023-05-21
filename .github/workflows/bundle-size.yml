@@ -1,5 +1,4 @@
-name: Bundle Size
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Bundle Size Analyzer
 on: 
   pull_request:
     types: [opened, synchronize]
