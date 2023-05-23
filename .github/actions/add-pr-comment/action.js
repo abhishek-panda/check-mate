@@ -25,6 +25,7 @@ async function run() {
               return context.payload.ref === `refs/heads/${el.head.ref}`;
           }) || prs[0];
 
+      console.log("pr.number", pr.number)
       await octokit.rest.issues.createComment({
         owner,
         repo,
